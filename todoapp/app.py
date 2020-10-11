@@ -117,11 +117,11 @@ def create_todo():
     try:
         description = request.get_json()['description']
         list_id = request.get_json()['list_id']
-        todo = Todo(description=description, complete=False, list_id=list_id)
+        todo = Todo(description=description, completed=False, list_id=list_id)
         db.session.add(todo)
         db.session.commit()
         body['id'] = todo.id
-        body['complete'] = todo.complete
+        body['completed'] = todo.completed
         body['description'] = todo.description
     except:
         db.session.rollback()
